@@ -13,16 +13,15 @@ export default function Page() {
     const formData = new FormData(e.currentTarget);
 
     try {
-      const response = await fetch("/api/auth/register", {
+      const response = await fetch("/api/auth/login", {
         method: "POST",
         body: JSON.stringify({
           email: formData.get("email"),
           password: formData.get("password"),
-          passwordRepeat: formData.get("passwordRepeat"),
         }),
       });
       if (response.ok) {
-        router.push("/login");
+        router.push("/");
       } else {
         const data = await response.json();
         setError(data.message);
@@ -31,50 +30,46 @@ export default function Page() {
       console.log(err);
     }
   };
-
   return (
     <>
       <AuthContainer>
-        <h1 className="text-3xl font-semibold mb-5">Crea tu cuenta</h1>
+        <h1 className="text-3xl font-semibold mb-5">Inicia sesión</h1>
         <form
           className="flex flex-col gap-3"
           onSubmit={(e) => handleSubmitForm(e)}
         >
           <label htmlFor="email">Email</label>
           <input
-            minLength={4}
             required
             className="border focus:outline-none p-2"
             name="email"
           />
           <label htmlFor="password">Contraseña</label>
           <input
-            minLength={8}
             required
             className="border focus:outline-none p-2"
             name="password"
             type="password"
           />
-          <label htmlFor="passwordRepeat">Confirmar Contraseña</label>
-          <input
-            minLength={8}
-            required
-            className="border focus:outline-none p-2"
-            name="passwordRepeat"
-            type="password"
-          />
-          <button className="p-3 bg-red-600 hover:opacity-80 text-white rounded-sm">
-            Registrarme
-          </button>
+          <div className="flex items-center gap-3">
+            <button className="p-3 bg-red-600 hover:opacity-80 text-white rounded-sm w-fit text-sm">
+              Dejame entrar!
+            </button>
+            <p className="text-xs text-blue-500 hover:text-blue-700 hover:cursor-pointer hover:underline">
+              ¿Olvidaste tu contraseña?
+            </p>
+          </div>
+
           {error && <p className="text-red-600">{error}</p>}
         </form>
+
         <p className="text-xs mt-10">
-          ¿Ya tienes una cuenta?{" "}
+          ¿No tienes una cuenta?{" "}
           <Link
-            href="/login"
+            href="/register"
             className="text-blue-500 hover:text-blue-700 hover:cursor-pointer hover:underline"
           >
-            Inicia sesión
+            Regístrate gratis
           </Link>
         </p>
       </AuthContainer>
