@@ -1,7 +1,9 @@
+"use client";
+
 export default function Page() {
   return (
     <>
-      <div></div>
+      <div className="bg-black w-screen h-screen"></div>
     </>
   );
 }
