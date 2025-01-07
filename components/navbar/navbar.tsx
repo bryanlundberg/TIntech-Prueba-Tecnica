@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
   return (
@@ -12,10 +13,18 @@ export default function Navbar() {
           className="w-[120px] h-[28px] object-scale-down"
         />
         <div className="text-white flex gap-5">
-          <button className="hover:opacity-90">Inicia sesión</button>
-          <button className="bg-white text-black p-2 rounded-sm hover:opacity-90">
+          <Link
+            href={"/login"}
+            className="hover:opacity-90 flex items-center justify-center"
+          >
+            Inicia sesión
+          </Link>
+          <Link
+            href="/register"
+            className="bg-white text-black p-2 rounded-sm hover:opacity-90"
+          >
             Regístrate
-          </button>
+          </Link>
         </div>
       </div>
     </>
