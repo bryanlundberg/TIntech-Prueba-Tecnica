@@ -88,6 +88,13 @@ export default function SearchResults() {
           ))}
       </div>
 
+      {search.length > 0 &&
+        ((category === "artist" && artistList.length === 0) ||
+          (category === "album" && albumsList.length === 0) ||
+          (category === "track" && trackList.length === 0)) && (
+          <p className="text-xs">Sin resultados</p>
+        )}
+
       {(artistList.length >= 1 ||
         albumsList.length >= 1 ||
         trackList.length >= 1) && (
