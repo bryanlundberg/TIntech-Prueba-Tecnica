@@ -3,8 +3,13 @@ import SearchBar from "@/components/search-bar/search-bar";
 import SearchResults from "@/components/search-results/search-results";
 import TabItem from "@/components/tabs/tab-item";
 import { useSearchStore } from "@/store/search-store";
+import { useSessionStore } from "@/store/session-store";
+import { redirect } from "next/navigation";
+
 export default function Page() {
   const { search, handleChangeCategory, category } = useSearchStore();
+  const { session } = useSessionStore();
+  if (!session) redirect("/login");
   return (
     <>
       {search !== "" && (
