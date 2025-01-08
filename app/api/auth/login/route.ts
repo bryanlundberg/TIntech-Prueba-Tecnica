@@ -9,8 +9,6 @@ export async function POST(request: NextRequest) {
   try {
     const { email, password } = await request.json();
 
-    console.log(email, password);
-
     if (!email || !password) {
       throw new Error("Faltan campos para validar el inicio de sesión");
     }

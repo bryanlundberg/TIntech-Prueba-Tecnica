@@ -31,14 +31,11 @@ export async function albumSearch({ limit, page, album }: IAlbumSearchParams) {
     if (album) params.album = album;
 
     url.search = new URLSearchParams(params).toString();
-    console.log(url.toString());
     const response = await fetch(url.toString());
 
     if (!response.ok) {
       throw new Error(`Response error: ${response.statusText}`);
     }
-
-    console.log(response);
 
     const data: AlbumSearchResult = await response.json();
     return data;

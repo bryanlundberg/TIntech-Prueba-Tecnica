@@ -15,10 +15,12 @@ type AlbumMatches = {
 };
 
 export type AlbumSearchResult = {
-  "@attr"?: object;
-  albummatches: AlbumMatches;
-  "opensearch:Query": OpenSearchQuery;
-  "opensearch:itemsPerPage": string;
-  "opensearch:startIndex": string;
-  "opensearch:totalResults": string;
+  results: {
+    "@attr"?: object;
+    albummatches: AlbumMatches;
+    "opensearch:Query": OpenSearchQuery;
+    "opensearch:itemsPerPage": string;
+    "opensearch:startIndex": string;
+    "opensearch:totalResults": string;
+  };
 };
