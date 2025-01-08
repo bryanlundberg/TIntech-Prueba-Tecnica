@@ -1,6 +1,8 @@
 "use client";
+import Button from "@/components/button/button";
 import AuthContainer from "@/components/containers/auth/auth-container";
-import Link from "next/link";
+import Input from "@/components/input/input";
+import CustomLink from "@/components/link/custom-link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 
@@ -41,41 +43,17 @@ export default function Page() {
           onSubmit={(e) => handleSubmitForm(e)}
         >
           <label htmlFor="email">Email</label>
-          <input
-            minLength={4}
-            required
-            className="border focus:outline-none p-2"
-            name="email"
-          />
+          <Input minLength={4} required name="email" />
           <label htmlFor="password">Contraseña</label>
-          <input
-            minLength={8}
-            required
-            className="border focus:outline-none p-2"
-            name="password"
-            type="password"
-          />
+          <Input minLength={8} required name="password" type="password" />
           <label htmlFor="passwordRepeat">Confirmar Contraseña</label>
-          <input
-            minLength={8}
-            required
-            className="border focus:outline-none p-2"
-            name="passwordRepeat"
-            type="password"
-          />
-          <button className="p-3 bg-red-600 hover:opacity-80 text-white rounded-sm">
-            Registrarme
-          </button>
+          <Input minLength={8} required name="passwordRepeat" type="password" />
+          <Button className="w-full">Registrarme</Button>
           {error && <p className="text-red-600">{error}</p>}
         </form>
         <p className="text-xs mt-10">
           ¿Ya tienes una cuenta?{" "}
-          <Link
-            href="/login"
-            className="text-blue-500 hover:text-blue-700 hover:cursor-pointer hover:underline"
-          >
-            Inicia sesión
-          </Link>
+          <CustomLink href="/login">Inicia sesión</CustomLink>
         </p>
       </AuthContainer>
     </>

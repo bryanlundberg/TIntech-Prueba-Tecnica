@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
 import { twMerge } from "tailwind-merge";
+import CustomLink from "../link/custom-link";
 
 interface ResultItemProps extends React.HTMLAttributes<HTMLDivElement> {
   image: string;
@@ -32,13 +32,13 @@ export default function ResultItem({
           className="size-20 rounded-full"
         />
         <div>
-          <Link
+          <CustomLink
             href={url}
             target="_blank"
-            className="font-semibold font-mono  text-blue-600 hover:opacity-90"
+            className="font-semibold font-mono"
           >
             {title}
-          </Link>
+          </CustomLink>
           <p className="italic text-sm">{subtitle}</p>
         </div>
       </div>

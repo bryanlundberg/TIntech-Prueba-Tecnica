@@ -1,7 +1,9 @@
 "use client";
+import Button from "@/components/button/button";
 import AuthContainer from "@/components/containers/auth/auth-container";
+import Input from "@/components/input/input";
+import CustomLink from "@/components/link/custom-link";
 import { useSessionStore } from "@/store/session-store";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 
@@ -43,22 +45,11 @@ export default function Page() {
           onSubmit={(e) => handleSubmitForm(e)}
         >
           <label htmlFor="email">Email</label>
-          <input
-            required
-            className="border focus:outline-none p-2"
-            name="email"
-          />
+          <Input name="email" required />
           <label htmlFor="password">Contraseña</label>
-          <input
-            required
-            className="border focus:outline-none p-2"
-            name="password"
-            type="password"
-          />
+          <Input required name="password" type="password" />
           <div className="flex items-center gap-3">
-            <button className="p-3 bg-red-600 hover:opacity-80 text-white rounded-sm w-fit text-sm">
-              Dejame entrar!
-            </button>
+            <Button>Déjame entrar!</Button>
             <p className="text-xs text-blue-500 hover:text-blue-700 hover:cursor-pointer hover:underline">
               ¿Olvidaste tu contraseña?
             </p>
@@ -69,12 +60,7 @@ export default function Page() {
 
         <p className="text-xs mt-10">
           ¿No tienes una cuenta?{" "}
-          <Link
-            href="/register"
-            className="text-blue-500 hover:text-blue-700 hover:cursor-pointer hover:underline"
-          >
-            Regístrate gratis
-          </Link>
+          <CustomLink href="/register">Regístrate gratis</CustomLink>
         </p>
       </AuthContainer>
     </>
