@@ -5,13 +5,15 @@ export default function Navbar() {
   return (
     <>
       <div className="bg-black flex h-[68px] px-2 items-center justify-between">
-        <Image
-          src={"/logo.svg"}
-          alt="logo last.fm"
-          width={100}
-          height={100}
-          className="w-[120px] h-[28px] object-scale-down"
-        />
+        <Link href={"/"}>
+          <Image
+            src={"/logo.svg"}
+            alt="logo last.fm"
+            width={100}
+            height={100}
+            className="w-[120px] h-[28px] object-scale-down"
+          />
+        </Link>
         <div className="text-white flex gap-5">
           <Link
             href={"/login"}

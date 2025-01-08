@@ -15,10 +15,12 @@ type TrackMatches = {
 };
 
 export type TrackSearchResult = {
-  "@attr"?: object;
-  albummatches: TrackMatches;
-  "opensearch:Query": OpenSearchQuery;
-  "opensearch:itemsPerPage": string;
-  "opensearch:startIndex": string;
-  "opensearch:totalResults": string;
+  results: {
+    "@attr"?: object;
+    trackmatches: TrackMatches;
+    "opensearch:Query": OpenSearchQuery;
+    "opensearch:itemsPerPage": string;
+    "opensearch:startIndex": string;
+    "opensearch:totalResults": string;
+  };
 };

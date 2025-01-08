@@ -21,10 +21,12 @@ type OpenSearchQuery = {
 };
 
 export type ArtistSearchResult = {
-  "@attr"?: object;
-  artistmatches: ArtistMatches;
-  "opensearch:Query": OpenSearchQuery;
-  "opensearch:itemsPerPage": string;
-  "opensearch:startIndex": string;
-  "opensearch:totalResults": string;
+  results: {
+    "@attr"?: object;
+    artistmatches: ArtistMatches;
+    "opensearch:Query": OpenSearchQuery;
+    "opensearch:itemsPerPage": string;
+    "opensearch:startIndex": string;
+    "opensearch:totalResults": string;
+  };
 };

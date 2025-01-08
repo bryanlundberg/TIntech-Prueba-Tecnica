@@ -1,31 +1,40 @@
 "use client";
-import { Search } from "lucide-react";
+import SearchBar from "@/components/search-bar/search-bar";
+import SearchResults from "@/components/search-results/search-results";
+import TabItem from "@/components/tabs/tab-item";
+import { useSearchStore } from "@/store/search-store";
 export default function Page() {
+  const { search, handleChangeCategory, category } = useSearchStore();
   return (
     <>
+      {search !== "" && (
+        <div className="max-w-xl mx-auto mt-10 font-black text-2xl">
+          Resultados para <span className="opacity-70">{search}</span>
+        </div>
+      )}
       <div className="flex gap-3 mt-10 max-w-xl mx-auto">
-        <div className="border-b-2 border-red-500">Artistas</div>
-        <div>Albums</div>
-        <div>Tracks</div>
+        <TabItem
+          onClick={() => handleChangeCategory("artist")}
+          label="Artistas"
+          active={category === "artist"}
+        />
+        <TabItem
+          onClick={() => handleChangeCategory("album")}
+          label="Albums"
+          active={category === "album"}
+        />
+        <TabItem
+          onClick={() => handleChangeCategory("track")}
+          label="Canciones"
+          active={category === "track"}
+        />
       </div>
 
       <div className="border-b"></div>
 
       <div className="max-w-xl mx-auto mt-10">
-        <form className="relative max-w-96">
-          <input
-            type="text"
-            required
-            minLength={1}
-            name="search"
-            autoComplete="off"
-            className="focus:shadow-md border relative w-full focus:outline-none transition duration-300 text-sm p-2"
-            placeholder="Busca música..."
-          />
-          <button className="absolute top-0 right-0 w-10 h-full z-10 flex items-center justify-center border-l">
-            <Search size={14} />
-          </button>
-        </form>
+        <SearchBar />
+        <SearchResults />
       </div>
     </>
   );
