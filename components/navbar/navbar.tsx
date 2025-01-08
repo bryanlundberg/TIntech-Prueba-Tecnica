@@ -54,7 +54,7 @@ export default function Navbar() {
             className="hover:opacity-90 text-white hover:cursor-pointer"
             onClick={handleLogout}
           >
-            Logout
+            Salir
           </p>
         )}
       </div>

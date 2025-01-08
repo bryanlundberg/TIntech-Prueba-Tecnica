@@ -12,7 +12,7 @@ export default function Page() {
           Resultados para <span className="opacity-70">{search}</span>
         </div>
       )}
-      <div className="flex gap-3 mt-10 max-w-xl mx-auto">
+      <div className="flex gap-3 mt-10 max-w-xl mx-auto px-3">
         <TabItem
           onClick={() => handleChangeCategory("artist")}
           label="Artistas"
@@ -32,7 +32,7 @@ export default function Page() {
 
       <div className="border-b"></div>
 
-      <div className="max-w-xl mx-auto mt-10">
+      <div className="max-w-xl mx-auto mt-10 px-3">
         <SearchBar />
         <SearchResults />
       </div>
