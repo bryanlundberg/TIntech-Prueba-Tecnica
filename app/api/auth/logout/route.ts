@@ -1,8 +1,17 @@
 import { cookies } from "next/headers";
 
 export async function POST() {
-  const cookiesStore = await cookies();
-  cookiesStore.delete("jwt");
+  const cookieStore = await cookies();
 
-  return Response.json({ ok: "ok" });
+  cookieStore.set("access_token", "", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "strict",
+    path: "/",
+    maxAge: 0,
+  });
+
+  return new Response(JSON.stringify({ message: "Cierre de sesión exitoso" }), {
+    status: 200,
+  });
 }

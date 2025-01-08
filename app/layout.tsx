@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/navbar/navbar";
+import SessionProvider from "@/components/session-provider";
 
 export const metadata: Metadata = {
   title: "TIntech Prueba Técnica",
@@ -16,8 +17,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className="antialiased min-h-dvh min-w-dvw">
-        <Navbar />
-        {children}
+        <SessionProvider>
+          <Navbar />
+          {children}
+        </SessionProvider>
       </body>
     </html>
   );

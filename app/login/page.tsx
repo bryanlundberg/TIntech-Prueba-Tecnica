@@ -1,10 +1,12 @@
 "use client";
 import AuthContainer from "@/components/containers/auth/auth-container";
+import { useSessionStore } from "@/store/session-store";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 
 export default function Page() {
+  const { signIn } = useSessionStore();
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
 
@@ -21,6 +23,8 @@ export default function Page() {
         }),
       });
       if (response.ok) {
+        const data = await response.json();
+        signIn(data.accessToken, data.session);
         router.push("/");
       } else {
         const data = await response.json();
