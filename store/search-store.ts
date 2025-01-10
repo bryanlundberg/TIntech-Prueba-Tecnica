@@ -5,7 +5,7 @@ type Category = "artist" | "track" | "album";
 interface SearchStore {
   search: string;
   category: Category;
-  handleChangeSearch: (word: string) => void;
+  handleChangeSearch: (word: string | undefined) => void;
   handleChangeCategory: (category: Category) => void;
 }
 
